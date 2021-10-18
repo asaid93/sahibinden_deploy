@@ -44,14 +44,14 @@ path_to_download=/sahibinden/downloads/$1
 path_to_completed=/sahibinden/completed/$1
 path_to_programs=/sahibinden/programs
 
-mkdir $path_to_download && cd $path_to_download
-mkdir ankara && cd ankara
-list=url-added-ankara-ilce.txt
-wget_1000_function $path_to_list $list
-echo "ankara bitti"
-sh $path_to_programs/extract-data.sh $path_to_completed $path_to_programs &
-sleep 35m
-
+#mkdir $path_to_download && cd $path_to_download
+#mkdir ankara && cd ankara
+#list=url-added-ankara-ilce.txt
+#wget_1000_function $path_to_list $list
+#echo "ankara bitti"
+#sh $path_to_programs/extract-data.sh $path_to_completed $path_to_programs &
+#sleep 35m
+#
 #mkdir antalya && cd antalya
 #list=url-added-antalya-ilce.txt
 #wget_1000_function $path_to_list $list
@@ -114,7 +114,15 @@ sleep 35m
 #echo "1000 3 finish"
 #cd ..
 #sleep 45m
-#
+
+mkdir $path_to_download && cd $path_to_download
+mkdir mugla-bodrum && cd mugla-bodrum
+list=url-added-mugla-bodrum-mahalle.txt
+wget_1000_function $path_to_list $list
+echo "mugla-bodrum bitti"
+sh $path_to_programs/extract-data.sh $path_to_completed $path_to_programs &
+#sleep 35m
+
 #mkdir mugla-bodrum && cd mugla-bodrum
 #wget --limit-rate=200k --reject-regex \
 #'toplu|guvenli|cikis|favicon|mobil|neden|magaza|site|\
