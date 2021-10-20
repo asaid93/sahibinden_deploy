@@ -1,4 +1,4 @@
-mkdir $1
+mkdir -p $1
 cd kiralik
 ls *.html | while read -r city
 do 
@@ -7,11 +7,13 @@ do
 	echo "$METADATA" >> /sahibinden/programs/meta.txt
 	ilan_sayi=$(awk 'BEGIN{split(ARGV[1],arr,"|"); print arr[3]}' "$METADATA")
 	sleep 0.1
-	if [ $city == !(*\?*) && $ilan_sayi -gt 20 ]
+	if [[ $city != *[\?]* ]] && [[ $ilan_sayi -lt 20 ]]
 	then 
 		rm -rf $city
-		sleep 0.1
+		echo "script calistirilmadi ve dosya silindi: "$city
 	else
+		echo "script baslatiliyor"
 		sh $2/sahibinden_awk_v6.sh $city $1/$city "$METADATA"
+		echo "script bitirildi"
 	fi
 done
