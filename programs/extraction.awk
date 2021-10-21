@@ -1,5 +1,5 @@
 /<tr data-id="[0-9]{9}"$/ {dataid=NR;title=dataid+3}(NR==dataid){sub(/^.*="/,""); sub(/".*$/,""); print; i++; next}
-(NR==title){sub(/^.*title="/,""); sub(/">$/,""); gsub(/&#39;/,"\'"); gsub(/&quot;/,"\""); gsub(/&#173;/,""); print; next}
+(NR==title){gsub(/^.*title="/,""); gsub(/">$/,""); gsub(/&#39;/,"\'"); gsub(/&quot;/,"\""); gsub(/&#173;/,""); gsub(/|/,"#"); print; next}
 /    <td class="searchResultsTagAttributeValue">/ {emlaktip=NR+1}(NR==emlaktip){gsub(/^ +/,""); gsub(/<.td>$/,""); print; next}
 /<td class="searchResultsAttributeValue">/ {z=NR+1}(NR==z){sub(/^ +/,""); gsub(/<.td>/,""); print; next}
 /<td class="searchResultsPriceValue">/ {t=NR+1}(NR==t){sub(/^.+<div> /,""); sub(/ TL.*$/,""); print;next}
