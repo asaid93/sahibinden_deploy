@@ -1,3 +1,4 @@
+#!/bin/bash
 mkdir -p $1
 cd kiralik
 ls *.html | while read -r city

@@ -1,3 +1,4 @@
+#!/bin/bash
 met=$3
 echo $met
 awk -v var="$met" -f /sahibinden/programs/extraction.awk $1 |\
