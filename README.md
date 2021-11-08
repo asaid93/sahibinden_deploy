@@ -15,4 +15,4 @@
 
 
 
-![Ekran Alıntısı-3](https://user-images.githubusercontent.com/56682895/140732063-bf86b5f0-e7b2-4049-86db-50bca4cd99f5.JPG)
+![Ekran Alıntısı-3](https://user-images.githubusercontent.com/56682895/140744103-6f792201-8698-491e-940c-264c275a8c11.JPG)
