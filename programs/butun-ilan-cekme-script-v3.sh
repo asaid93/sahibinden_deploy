@@ -12,13 +12,8 @@ wget \
 		        residence|villa|yazlik|ciftlik-evi|kosk-konak|date' \
         -R "sahibinden" -R "insaat*" \
         --accept-regex 'pagingSize=50' \
-        --retry-on-host-error \
-        --retry-connrefused \
-	--retry-on-http-error=429 \
-	--waitretry=60 \
-	--tries=4 \
-	--timeout=40 \
-	--read-timeout=60 \
+	--timeout=20 \
+	--read-timeout=20 \
 	-nd -nH -np -m -p -E -k -l 4 -r \
         --input-file=$1/$2
 }
@@ -36,13 +31,8 @@ wget \
         residence|villa|yazlik|ciftlik-evi|kosk-konak|date' \
         -R "sahibinden" -R "insaat*" \
         --accept-regex 'pagingSize=50' \
-        --retry-on-host-error \
-	--retry-connrefused \
-	--retry-on-http-error=429 \
-	--waitretry=60 \
-        --tries=4 \
-        --timeout=40 \
-        --read-timeout=60 \
+	--timeout=20 \
+	--read-timeout=20 \
 	-nH -np -m -p -E -k -l 4 -r \
         --input-file=$1/$2
 
@@ -60,13 +50,8 @@ wget \
         residence|villa|yazlik|ciftlik-evi|kosk-konak|date' \
         -R "sahibinden" -R "insaat*" \
         --accept-regex 'pagingSize=50' \
-        --retry-on-host-error \
-	--retry-connrefused \
-	--retry-on-http-error=429 \
-	--waitretry=60 \
-	--tries=4 \
-	--timeout=40 \
-	--read-timeout=60 \
+	--timeout=20 \
+	--read-timeout=20 \
 	-nH -np -m -p -E -k -l 4 -r \
         --input-file=$1/$2
 
@@ -86,7 +71,7 @@ list=url-added-ankara-ilce.txt
 wget_1000_function $path_to_list $list
 echo "ankara bitti"
 sh $path_to_programs/extract-data.sh $path_to_completed $path_to_programs &
-sleep 30m
+sleep 42m
 
 cd $path_to_download
 mkdir antalya && cd antalya
@@ -94,7 +79,7 @@ list=url-added-antalya-ilce.txt
 wget_1000_function $path_to_list $list
 echo "antalya bitti"
 sh $path_to_programs/extract-data.sh $path_to_completed $path_to_programs &
-sleep 35m
+sleep 42m
 
 cd $path_to_download
 mkdir izmir && cd izmir
@@ -102,7 +87,7 @@ list=url-added-izmir-ilce.txt
 wget_1000_function $path_to_list $list
 echo "izmir bitti"
 sh $path_to_programs/extract-data.sh $path_to_completed $path_to_programs &
-sleep 37m
+sleep 42m
 
 cd $path_to_download
 mkdir mugla && cd mugla
@@ -118,7 +103,7 @@ list=url-added-mugla-bodrum-mahalle.txt
 wget_1000_function $path_to_list $list
 echo "mugla mahalle finish"
 sh $path_to_programs/extract-data.sh $path_to_completed $path_to_programs &
-sleep 35m
+sleep 42m
 
 cd $path_to_download
 mkdir ikibinlikler && cd ikibinlikler
@@ -126,7 +111,7 @@ list=url-added-1000-2000-arasi-il-ilceler.txt
 wget_1000_2000_function $path_to_list $list
 echo "2000 finish"
 sh $path_to_programs/extract-data.sh $path_to_completed $path_to_programs &
-sleep 37m
+sleep 42m
 
 cd $path_to_download
 mkdir istanbul-part-1 && cd istanbul-part-1
@@ -134,7 +119,7 @@ list=url-added-1000den-kucuk-ilceler-istanbul-PART-1.txt
 wget_1000_function $path_to_list $list
 echo "ist 1 finish"
 sh $path_to_programs/extract-data.sh $path_to_completed $path_to_programs &
-sleep 39m
+sleep 42m
 
 cd $path_to_download
 mkdir istanbul-part-2 && cd istanbul-part-2
@@ -142,7 +127,7 @@ list=url-added-1000den-kucuk-ilceler-istanbul-PART-2.txt
 wget_1000_function $path_to_list $list
 echo "ist 2 finish"
 sh $path_to_programs/extract-data.sh $path_to_completed $path_to_programs &
-sleep 37m
+sleep 42m
 
 cd $path_to_download
 mkdir iller-part-1 && cd iller-part-1
@@ -150,7 +135,7 @@ list=url-added-1000den-kucuk-iller-PART-1.txt
 wget_1000_function $path_to_list $list
 echo "1000 1 finish"
 sh $path_to_programs/extract-data.sh $path_to_completed $path_to_programs &
-sleep 33m
+sleep 42m
 
 cd $path_to_download
 mkdir iller-part-2 && cd iller-part-2
@@ -158,7 +143,7 @@ list=url-added-1000den-kucuk-iller-PART-2.txt
 wget_1000_function $path_to_list $list
 echo "1000 2 finish"
 sh $path_to_programs/extract-data.sh $path_to_completed $path_to_programs &
-sleep 35m
+sleep 42m
 
 cd $path_to_download
 mkdir iller-part-3 && cd iller-part-3
@@ -166,7 +151,7 @@ list=url-added-1000den-kucuk-iller-PART-3.txt
 wget_1000_function $path_to_list $list
 echo "1000 3 finish"
 sh $path_to_programs/extract-data.sh $path_to_completed $path_to_programs &
-sleep 31m
+sleep 45m
 
 cd $path_to_download
 mkdir kecioren && cd kecioren
@@ -176,7 +161,12 @@ wget_kecioren_function $path_to_list $list
 echo "kecioren finish"
 sh $path_to_programs/extract-data.sh $path_to_completed $path_to_programs &
 
+echo "indirmeler bitti \n sıra dosya oluşturmada"
 
+cd $path_to_completed
+sh $path_to_programs/finalize-completeds.sh $1
+
+echo "butun script bitti"
 
 
 #sleep 45m
